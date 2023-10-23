@@ -1,0 +1,25 @@
+apiVersion: core.oam.dev/v1beta1
+kind: TraitDefinition
+metadata:
+  name: mytrait
+spec:
+  appliesToWorkloads:
+    - deployments.apps
+  schematic:
+    cue:
+      template: |
+        patch: {
+          spec: {
+            template: {
+              spec: {
+                containers: [{
+                  name: context.name
+                  env: [{
+                    name:  "MY_TRAIT"
+                    value: "true"
+                  }]
+                }]
+              }
+            }
+          }
+        }

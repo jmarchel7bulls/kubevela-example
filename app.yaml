@@ -1,0 +1,11 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  name: mywebapp
+spec:
+  components:
+    - name: backend
+      type: webservice
+      properties:
+        image: "nginx"
+        port: 80
